@@ -1,0 +1,41 @@
+<%
+func defaultValue(for variable: Variable, of type: Type) -> Variable? {
+    return type.staticVariables.first { $0.name == "\(variable.name)TestDefault" }
+}
+-%>
+<%_ for type in types.structs { -%>
+<%_ guard type.implements["AutoTestBuilder"] != nil else { continue } -%>
+// sourcery:inline:<%= type.name %>.AutoTestDoubleBuilder
+<%_ let variablesNonStaticNonComputed = type.variables.filter { !$0.isStatic && !$0.isComputed } -%>
+final class <%= type.name %>Builder {
+	<%_ for variable in variablesNonStaticNonComputed { -%>
+		<%_ if let defaultVal = defaultValue(for: variable, of: type) { -%>
+	private var <%= variable.name %>: <%= variable.typeName %>? = <%= defaultVal.defaultValue! %>
+		<%_ } else { -%>
+	private var <%= variable.name %>: <%= variable.typeName %>?	
+		<%_ } -%>
+	<%_ } -%>
+
+	<%_ for variable in variablesNonStaticNonComputed { -%>
+	func with(<%= variable.name %>: <%= variable.typeName %>) -> <%= type.name %>Builder {
+		self.<%= variable.name %> = <%= variable.name %>
+		return self
+	}
+	<%_ } -%>
+
+	func build() throws -> <%= type.name %> {
+	<%_ for variable in variablesNonStaticNonComputed { -%>
+		guard let <%= variable.name %> = self.<%= variable.name %> else { throw AutoTestBuilderError.missingValue }
+	<%_ } -%>
+		return <%= type.name %>(
+		<%_ for i in 0..<variablesNonStaticNonComputed.count { -%>
+			<%_ let variable = variablesNonStaticNonComputed[i] -%>
+			<%_ let commaString = i == variablesNonStaticNonComputed.count-1 ? "" : "," -%>
+			<%= variable.name %>:<%= variable.name %><%= commaString %>
+		<%_ } -%>
+		)
+	}
+
+}
+// sourcery:end
+<%_ } -%>
