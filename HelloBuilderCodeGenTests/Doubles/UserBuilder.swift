@@ -8,5 +8,5 @@ extension User: AutoTestBuilder {
     static private let idTestDefault = UUID()
 }
 
-// sourcery:inline:User.AutoTestDoubleBuilder
+// sourcery:inline:User.AutoTestBuilder
 // sourcery:end

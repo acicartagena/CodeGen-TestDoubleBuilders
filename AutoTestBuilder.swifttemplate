@@ -5,7 +5,7 @@ func defaultValue(for variable: Variable, of type: Type) -> Variable? {
 -%>
 <%_ for type in types.structs { -%>
 <%_ guard type.implements["AutoTestBuilder"] != nil else { continue } -%>
-// sourcery:inline:<%= type.name %>.AutoTestDoubleBuilder
+// sourcery:inline:<%= type.name %>.AutoTestBuilder
 <%_ let variablesNonStaticNonComputed = type.variables.filter { !$0.isStatic && !$0.isComputed } -%>
 final class <%= type.name %>Builder {
 	<%_ for variable in variablesNonStaticNonComputed { -%>
