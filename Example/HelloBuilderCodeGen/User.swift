@@ -3,7 +3,12 @@
 import Foundation
 
 struct User {
-    let name: String
+    struct Name {
+        let first: String
+        let last: String
+    }
+    
+    let name: Name
     let id: UUID
     let email: String
 }
