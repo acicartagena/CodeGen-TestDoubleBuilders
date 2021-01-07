@@ -6,13 +6,14 @@ import Foundation
 extension User: AutoTestBuilder {
     static private let nameTestDefault = "Name"
     static private let idTestDefault = UUID()
+    static private let emailTestDefault = "name@hello.com"
 }
 
 // sourcery:inline:User.AutoTestDoubleBuilder
 final class UserBuilder {
 	private var name: String? = "Name"
 	private var id: UUID? = UUID()
-	private var email: String?	
+	private var email: String? = "name@hello.com"
 
 	func with(name: String) -> UserBuilder {
 		self.name = name
