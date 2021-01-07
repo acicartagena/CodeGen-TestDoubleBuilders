@@ -18,6 +18,8 @@
 		3594C83225A6BE00000DDA28 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594C83125A6BE00000DDA28 /* User.swift */; };
 		3594C84025A6E7C5000DDA28 /* AutoTestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594C83F25A6E7C5000DDA28 /* AutoTestBuilder.swift */; };
 		3594C84E25A6E963000DDA28 /* UserBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594C83725A6E79D000DDA28 /* UserBuilder.swift */; };
+		3594C86E25A6F172000DDA28 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594C86D25A6F172000DDA28 /* Message.swift */; };
+		3594C87325A6F196000DDA28 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594C87225A6F196000DDA28 /* Group.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		3594C83125A6BE00000DDA28 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3594C83725A6E79D000DDA28 /* UserBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBuilder.swift; sourceTree = "<group>"; };
 		3594C83F25A6E7C5000DDA28 /* AutoTestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoTestBuilder.swift; sourceTree = "<group>"; };
+		3594C86D25A6F172000DDA28 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		3594C87225A6F196000DDA28 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,8 @@
 				3594C80025A6BDE5000DDA28 /* SceneDelegate.swift */,
 				3594C80225A6BDE5000DDA28 /* ViewController.swift */,
 				3594C83125A6BE00000DDA28 /* User.swift */,
+				3594C86D25A6F172000DDA28 /* Message.swift */,
+				3594C87225A6F196000DDA28 /* Group.swift */,
 				3594C80425A6BDE5000DDA28 /* Main.storyboard */,
 				3594C80725A6BDE6000DDA28 /* Assets.xcassets */,
 				3594C80925A6BDE6000DDA28 /* LaunchScreen.storyboard */,
@@ -277,6 +283,8 @@
 			files = (
 				3594C83225A6BE00000DDA28 /* User.swift in Sources */,
 				3594C80325A6BDE5000DDA28 /* ViewController.swift in Sources */,
+				3594C86E25A6F172000DDA28 /* Message.swift in Sources */,
+				3594C87325A6F196000DDA28 /* Group.swift in Sources */,
 				3594C7FF25A6BDE5000DDA28 /* AppDelegate.swift in Sources */,
 				3594C80125A6BDE5000DDA28 /* SceneDelegate.swift in Sources */,
 			);
