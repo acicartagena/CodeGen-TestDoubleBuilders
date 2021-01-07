@@ -5,5 +5,5 @@ import Foundation
 protocol AutoTestBuilder { }
 
 enum AutoTestBuilderError: Error {
-    case missingValue
+    case missingValue(String)
 }
