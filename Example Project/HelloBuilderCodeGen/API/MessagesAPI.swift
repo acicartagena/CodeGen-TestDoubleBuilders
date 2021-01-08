@@ -2,11 +2,6 @@
 
 import Foundation
 
-enum APIError: Error {
-    case networkError
-    case other
-}
-
 protocol MessagesAPI: AutoAPISpyable {
     func fetchAll(completion: (Result<[Message], APIError>) -> Void)
 }
@@ -16,6 +11,4 @@ struct MessagesAPIService: MessagesAPI {
         // todo. doesn't matter
     }
 }
-
-protocol AutoAPISpyable { }
 
