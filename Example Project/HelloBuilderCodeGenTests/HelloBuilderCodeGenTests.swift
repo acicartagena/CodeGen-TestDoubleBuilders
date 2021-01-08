@@ -16,7 +16,8 @@ class HelloBuilderCodeGenTests: XCTestCase {
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-        let user = try UserBuilder().with(name: "Angela").build()
+        let name = try UserNameBuilder().with(first: "AA").with(last: "CC").build()
+        let user = try UserBuilder().with(name: name).with(email: "me@email.com").build()
         XCTAssertNotNil(user)
     }
 }

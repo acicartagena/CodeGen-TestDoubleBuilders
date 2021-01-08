@@ -8,6 +8,11 @@ extension User: AutoTestBuilder {
     static private let idTestDefault = UUID()
 }
 
+extension User.Name: AutoTestBuilder {
+    static private let first: String = "A"
+    static private let last: String = "C"
+}
+
 // sourcery:inline:User.AutoTestBuilder
 // GENERATED CODE - changes done will be overwritten
 final class UserBuilder {
@@ -36,6 +41,33 @@ final class UserBuilder {
 			name:name,
 			id:id,
 			email:email
+		)
+	}
+
+}
+// sourcery:end
+
+// sourcery:inline:User.Name.AutoTestBuilder
+// GENERATED CODE - changes done will be overwritten
+final class UserNameBuilder {
+	private var first: String?	
+	private var last: String?	
+
+	func with(first: String) -> UserNameBuilder {
+		self.first = first
+		return self
+	}
+	func with(last: String) -> UserNameBuilder {
+		self.last = last
+		return self
+	}
+
+	func build() throws -> User.Name {
+		guard let first = self.first else { throw AutoTestBuilderError.missingValue("first") }
+		guard let last = self.last else { throw AutoTestBuilderError.missingValue("last") }
+		return User.Name(
+			first:first,
+			last:last
 		)
 	}
 

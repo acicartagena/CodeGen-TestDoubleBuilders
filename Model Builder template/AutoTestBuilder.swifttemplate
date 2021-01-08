@@ -6,13 +6,17 @@ func defaultValue(for variable: Variable, of type: Type) -> Variable? {
 func typeName(for variable: Variable) -> String {
 	return variable.type?.name ?? variable.typeName.name
 }
+
+func stripDots(for string: String) -> String {
+	return string.replacingOccurrences(of: ".", with: "")
+}
 -%>
 <%_ for type in types.all { -%>
 <%_ guard type.implements["AutoTestBuilder"] != nil else { continue } -%>
 // sourcery:inline:<%= type.name %>.AutoTestBuilder
 <%_ let variablesNonStaticNonComputed = type.variables.filter { !$0.isStatic && !$0.isComputed } -%>
 // GENERATED CODE - changes done will be overwritten
-final class <%= type.name %>Builder {
+final class <%= stripDots(for: type.name) %>Builder {
 	<%_ for variable in variablesNonStaticNonComputed { -%>
 		<%_ var variableTypeName: String = typeName(for: variable) -%>
 		<%_ if let defaultVal = defaultValue(for: variable, of: type) { -%>
@@ -24,7 +28,7 @@ final class <%= type.name %>Builder {
 
 	<%_ for variable in variablesNonStaticNonComputed { -%>
 		<%_ var variableTypeName: String = typeName(for: variable) -%>
-	func with(<%= variable.name %>: <%= variableTypeName %>) -> <%= type.name %>Builder {
+	func with(<%= variable.name %>: <%= variableTypeName %>) -> <%= stripDots(for: type.name) %>Builder {
 		self.<%= variable.name %> = <%= variable.name %>
 		return self
 	}
