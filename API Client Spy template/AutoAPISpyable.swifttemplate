@@ -1,0 +1,33 @@
+<%
+func completionReturnValue(for method: SourceryRuntime.Method) -> String? {
+    let typeName = method.parameters.filter { $0.name == "completion" }.map { $0.typeName }.first
+    guard let closure = typeName?.closure else { return nil }
+    let closureParameters = closure.parameters
+    if let result = closureParameters.first, closureParameters.count == 1 {
+        return result.typeName.name
+    } else {
+        let string = "(" + closureParameters.map { $0.name + "," }.joined(separator:"") + ")"
+        return string
+    }
+}
+
+func typeName(for variable: Variable) -> String {
+	return variable.type?.name ?? variable.typeName.name
+}
+-%>
+<%_ for type in types.protocols { -%>
+<%_ guard type.implements["AutoAPISpyable"] != nil else { continue } -%>
+<%_ let variablesNonStaticNonComputed = type.variables.filter { !$0.isStatic && !$0.isComputed } -%>
+final class <%= type.name %>Spy: <%= type.name %> {
+	<%_ for method in type.methods { -%>
+    <%_ guard let methodType = completionReturnValue(for: method) else { continue } -%>
+    var <%= method.callName %>Result: <%= methodType %>?
+	<%_ } -%>
+
+    <%_ for method in type.methods { -%>
+    func <%= method.name %> {
+        completion(<%= method.callName %>Result ?? .failure(.other))
+    }
+    <%_ } -%>
+}
+<%_ } -%>

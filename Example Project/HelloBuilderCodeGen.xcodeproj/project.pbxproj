@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		357E735025A839600030BB6E /* MessagesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E734F25A839600030BB6E /* MessagesAPI.swift */; };
 		3594C7FF25A6BDE5000DDA28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594C7FE25A6BDE5000DDA28 /* AppDelegate.swift */; };
 		3594C80125A6BDE5000DDA28 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594C80025A6BDE5000DDA28 /* SceneDelegate.swift */; };
 		3594C80325A6BDE5000DDA28 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594C80225A6BDE5000DDA28 /* ViewController.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		357E734F25A839600030BB6E /* MessagesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesAPI.swift; sourceTree = "<group>"; };
 		3594C7FB25A6BDE5000DDA28 /* HelloBuilderCodeGen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloBuilderCodeGen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3594C7FE25A6BDE5000DDA28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3594C80025A6BDE5000DDA28 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				3594C83125A6BE00000DDA28 /* User.swift */,
 				3594C86D25A6F172000DDA28 /* Message.swift */,
 				3594C87225A6F196000DDA28 /* Group.swift */,
+				357E734F25A839600030BB6E /* MessagesAPI.swift */,
 				3594C80425A6BDE5000DDA28 /* Main.storyboard */,
 				3594C80725A6BDE6000DDA28 /* Assets.xcassets */,
 				3594C80925A6BDE6000DDA28 /* LaunchScreen.storyboard */,
@@ -285,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3594C83225A6BE00000DDA28 /* User.swift in Sources */,
+				357E735025A839600030BB6E /* MessagesAPI.swift in Sources */,
 				3594C80325A6BDE5000DDA28 /* ViewController.swift in Sources */,
 				3594C86E25A6F172000DDA28 /* Message.swift in Sources */,
 				3594C87325A6F196000DDA28 /* Group.swift in Sources */,
