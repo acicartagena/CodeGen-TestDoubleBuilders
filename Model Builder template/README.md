@@ -3,7 +3,7 @@
 This code uses [Sourcery](https://github.com/krzysztofzablocki/Sourcery) as a way to codegen Model Builders using `AutoTestBuilder.swifttemplate` 
 
 ## Model Builders
-  Models when used in Unit tests can add additional work to be able to be instantiated. This additional work can be in the form of always using the app module's init method all the time or creating convenience inits. This is where the builder pattern comes in to be able to customise instantiation of models for unit tests. 
+  Models when used in Unit tests can add additional work to be able to be instantiated. This additional work can be in the form of always using the app module's init method all the time or creating convenience inits. The builder pattern can be used to customise instantiation of models for unit tests. 
 
 Model (App):
 ```
