@@ -15,6 +15,7 @@ func typeName(for variable: Variable) -> String {
 	return variable.type?.name ?? variable.typeName.name
 }
 -%>
+@testable import HelloBuilderCodeGen
 <%_ for type in types.protocols { -%>
 <%_ guard type.implements["AutoAPISpyable"] != nil else { continue } -%>
 <%_ let variablesNonStaticNonComputed = type.variables.filter { !$0.isStatic && !$0.isComputed } -%>
