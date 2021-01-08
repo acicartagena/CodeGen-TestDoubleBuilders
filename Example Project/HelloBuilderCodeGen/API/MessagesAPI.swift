@@ -4,11 +4,16 @@ import Foundation
 
 protocol MessagesAPI: AutoAPISpyable {
     func fetchAll(completion: (Result<[Message], APIError>) -> Void)
+    func message(id: String, completion: (Result<Message, APIError>) -> Void)
 }
 
 struct MessagesAPIService: MessagesAPI {
     func fetchAll(completion: (Result<[Message], APIError>) -> Void) {
-        // todo. doesn't matter
+        // todo
+    }
+
+    func message(id: String, completion: (Result<Message, APIError>) -> Void) {
+        // todo
     }
 }
 

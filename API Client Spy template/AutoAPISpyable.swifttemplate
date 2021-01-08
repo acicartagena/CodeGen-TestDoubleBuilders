@@ -20,6 +20,14 @@ func typeName(for variable: Variable) -> String {
 <%_ guard type.implements["AutoAPISpyable"] != nil else { continue } -%>
 <%_ let variablesNonStaticNonComputed = type.variables.filter { !$0.isStatic && !$0.isComputed } -%>
 final class <%= type.name %>Spy: <%= type.name %> {
+
+	enum Call {
+	<%_ for method in type.methods { -%>
+    	case <%= method.callName %>
+	<%_ } -%>
+	}
+	var calls: [Call] = []
+
 	<%_ for method in type.methods { -%>
     <%_ guard let methodType = completionReturnValue(for: method) else { continue } -%>
     var <%= method.callName %>Result: <%= methodType %>?
@@ -27,6 +35,7 @@ final class <%= type.name %>Spy: <%= type.name %> {
 
     <%_ for method in type.methods { -%>
     func <%= method.name %> {
+    	calls.append(.<%= method.callName %>)
         completion(<%= method.callName %>Result ?? .failure(.other))
     }
     <%_ } -%>
