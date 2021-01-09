@@ -1,9 +1,21 @@
 # Sourcery - CodeGen Templates
 
-# Model Builders
-Code gen Model Builders for Unit tests. 
+[Sourcery](https://github.com/krzysztofzablocki/Sourcery) is a code generator for Swift language. 
 
-example:
+The templates in this repo has assumptions on the architecture of the codebase. Types used in the codebase need to implement or extend the template protocols to be part of the type to be processed. Instead of having the template address all the different cases, they mostly try to cover the simple one scenarios. This leaves the developer to write the custom handcrafted code for the more complex and bespoke types.
+
+[Reference](https://cdn.rawgit.com/krzysztofzablocki/Sourcery/master/docs/Types.html)
+
+# Model Builders
+
+## Code gen
+User.swift
+```
+struct User: Codable {
+    let name: String
+}
+```
+UserBuilder.swift
 ```
 extension User: AutoTestBuilder {
     static private let nameTestDefault = "A"
@@ -29,10 +41,23 @@ final class UserBuilder {
 // sourcery:end
 ```
 
-# API Client Spy
-Code gen API Client Spy
+## Example
+```
+let userA: User = UserBuilder().build()
+let userB: User = UserBuilder().with(name: "B").build()
+```
 
-example:
+# API Client Spy
+
+## Code gen 
+MessagesAPI.swift
+```
+protocol MessagesAPI: AutoAPISpyable {
+    func fetchAll(completion: (Result<[Message], APIError>) -> Void)
+    func message(id: String, completion: (Result<Message, APIError>) -> Void)
+}
+```
+
 AutoAPISpyable.generated.swift
 ```
 // Generated using Sourcery 1.0.2 — https://github.com/krzysztofzablocki/Sourcery
@@ -58,5 +83,16 @@ final class MessagesAPISpy: MessagesAPI {
         calls.append(.message)
         completion(messageResult ?? .failure(.other))
     }
+}
+```
+
+## Example
+```
+func testFetchAll() {
+    let spy = MessagesAPISpy()
+    spy.fetchAllResults = .success([MessageBuilder().build()])
+    let subject = MessagesViewModel(api: spy)
+    subject.fetchAll()
+    XCTAssertEqual(spy.calls, [.fetchAll])
 }
 ```

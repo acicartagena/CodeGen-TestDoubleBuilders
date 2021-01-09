@@ -8,7 +8,7 @@ The implementation for the API layer in this code is having a `protocol <X>API` 
 ```
 protocol MessagesAPI {
     func fetchAll(completion: (Result<[Message], APIError>) -> Void)
-    func message(id: UUID, completion: (Result<Message, APIError>) -> Void)
+    func message(id: String, completion: (Result<Message, APIError>) -> Void)
 }
 
 struct MessagesAPIService: MessagesAPI {
@@ -16,7 +16,7 @@ struct MessagesAPIService: MessagesAPI {
         // todo
     }
     
-    func message(id: UUID, completion: (Result<Message, APIError>) -> Void) {
+    func message(id: String, completion: (Result<Message, APIError>) -> Void) {
         // todo
     }
 }
@@ -28,7 +28,7 @@ One way of mocking is introducting an API Client spy like `struct <X>APISpy: <X>
 final class MessagesAPISpy: MessagesAPI {
     enum Call {
         case .fetchAll
-        case .message(id: UUID)
+        case .message(id: String)
     }
     var calls: [Call]
     
@@ -40,7 +40,7 @@ final class MessagesAPISpy: MessagesAPI {
         completion(fetchAllResult ?? .failure(.other))
     }
     
-    func message(id: UUID, completion: (Result<Message, APIError>) -> Void) {
+    func message(id: String, completion: (Result<Message, APIError>) -> Void) {
         calls.append(.message(id:id))
         completion(messageResult ?? .failure(.other))
     }
@@ -52,11 +52,9 @@ In this example an empty `AutoAPISpyable` protocol is introduced. The API protoc
 ```
 protocol MessagesAPI: AutoAPISpyable {
     func fetchAll(completion: (Result<[Message], APIError>) -> Void)
-    func message(id: UUID, completion: (Result<Message, APIError>) -> Void)
+    func message(id: String, completion: (Result<Message, APIError>) -> Void)
 }
 ```
-
-The code would be generated in between `//sourcery` comments
 
 For this example:
 - the api protocols need to extend `AutoAPISpyable` to be included when generating the API Spy.
