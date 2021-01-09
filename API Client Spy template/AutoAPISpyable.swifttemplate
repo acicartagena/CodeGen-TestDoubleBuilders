@@ -21,7 +21,7 @@ func typeName(for variable: Variable) -> String {
 <%_ let variablesNonStaticNonComputed = type.variables.filter { !$0.isStatic && !$0.isComputed } -%>
 final class <%= type.name %>Spy: <%= type.name %> {
 
-	enum Call {
+	enum Call: Equatable {
 	<%_ for method in type.methods { -%>
     	case <%= method.callName %>
 	<%_ } -%>
